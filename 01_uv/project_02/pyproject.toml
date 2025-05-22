@@ -1,5 +1,5 @@
 [project]
-name = "01-project-uv"
+name = "project-02"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -10,7 +10,7 @@ requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]
-01-project-uv = "01_project_uv:main"
+project-02 = "project_02:main"
 
 [build-system]
 requires = ["hatchling"]
