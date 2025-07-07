@@ -5,11 +5,10 @@ from agents import (
     Agent,
     Runner,
     RunConfig,
-    OpenAIChatCompletionsModel,AsyncOpenAI,
+    OpenAIChatCompletionsModel,
+    AsyncOpenAI,
     set_tracing_disabled,
     enable_verbose_stdout_logging,
-    
-
 )
 # enable_verbose_stdout_logging()
 

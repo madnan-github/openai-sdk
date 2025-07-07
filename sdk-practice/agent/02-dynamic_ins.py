@@ -5,13 +5,12 @@ from agents import (
     Agent,
     Runner,
     RunConfig,
-    OpenAIChatCompletionsModel,AsyncOpenAI,
+    OpenAIChatCompletionsModel,
+    AsyncOpenAI,
     set_tracing_disabled,
     enable_verbose_stdout_logging,RunContextWrapper
-    
-
 )
-# enable_verbose_stdout_logging()
+enable_verbose_stdout_logging()
 
 from agents.run import RunConfig
 from rich import print
@@ -46,6 +45,6 @@ agent= Agent(
     # instructions=dynamic_instructions               #test:2 --> use func
     # instructions=   #test:3 --> use None mean ins not required its optinal
     )
-result = Runner.run_sync(starting_agent=agent, input="What is 2 + 20?", run_config=config)
+result = Runner.run_sync(starting_agent=agent, input="who are you and what is 2 + 30?", run_config=config)
 print("Result \n")
 print(result.final_output)
