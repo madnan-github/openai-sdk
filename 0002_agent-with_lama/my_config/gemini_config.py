@@ -10,7 +10,7 @@ gemini_api_key = os.getenv("GEMINI_API_KEY")
 gemini_base_url = os.getenv("GEMINI_BASE_URL")
 
 if gemini_api_key is None:
-    raise ValueError("GROQ_API_KEY environment variable is not set")
+    raise ValueError("GEMINI_API_KEY environment variable is not set")
 
 gemini_client = AsyncOpenAI(
     api_key=gemini_api_key,
