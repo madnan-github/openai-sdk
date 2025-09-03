@@ -1,20 +1,25 @@
-import os
-from dotenv import load_dotenv
-from agents import Agent, Runner
-from agents.extensions.models.litellm_model import LitellmModel
-from rich import print
+import asyncio
+from agents import Agent, Runner, function_tool, set_tracing_disabled
+from model_settings import liteLLM_gemini20_model, liteLLM_groq_model
 
-load_dotenv()
+set_tracing_disabled(disabled=True)
 
-gemini_model="gemini/gemini-2.0-flash"
-gemini_api_key = os.getenv("GEMINI_API_KEY")
+@function_tool
+def get_weather(city:str)->str:
+    return f"The weather in {city} is sunny."
 
 agent = Agent(
     name="Assistant",
-    instructions="You are a helpful assistant",
-    model=LitellmModel(model=gemini_model, api_key=gemini_api_key)
+    instructions="You are a helpful assistant.",
+    model=liteLLM_groq_model,
+    tools=[get_weather],
 )
 
-result = Runner.run_sync(agent,"How are you, and what is the capital of Pakistan?")
-print(result.final_output)
+# Runner.run
+async def main():
+    result = await Runner.run(agent,"How is the weather of Swat?")
+    print(result.final_output)
+
+if __name__ == "__main__":
+    asyncio.run(main())
 
